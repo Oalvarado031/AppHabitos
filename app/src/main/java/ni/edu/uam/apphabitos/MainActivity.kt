@@ -161,7 +161,7 @@ fun HeaderSection() {
     ) {
         Column {
             Text(
-                "Hola, Oscar 👋",
+                "Hola, Oscar 👋 !!",
                 fontSize = 26.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = TextPrimary
