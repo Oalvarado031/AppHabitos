@@ -205,12 +205,26 @@ fun TarjetaProgreso(progreso: Float, porcentaje: Int, completados: Int, total: I
         label = "progreso"
     )
 
+    // 🎨 Colores dinámicos según porcentaje
+    val colorInicio = when {
+        porcentaje < 50  -> Color(0xFFC0392B)  // Rojo oscuro
+        porcentaje < 100 -> Color(0xFFE67E22)  // Naranja
+        else             -> Color(0xFF27AE60)  // Verde oscuro
+    }
+    val colorFin = when {
+        porcentaje < 50  -> Color(0xFFE74C3C)  // Rojo
+        porcentaje < 100 -> Color(0xFFF1C40F)  // Amarillo
+        else             -> Color(0xFF2ECC71)  // Verde
+    }
+    val animColorInicio by animateColorAsState(colorInicio, tween(600), label = "c1")
+    val animColorFin    by animateColorAsState(colorFin,    tween(600), label = "c2")
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(24.dp))
             .background(
-                Brush.linearGradient(listOf(DarkGreen, PrimaryGreen))
+                Brush.linearGradient(listOf(animColorInicio, animColorFin))
             )
             .padding(24.dp)
     ) {
